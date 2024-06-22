@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/output.css" rel="stylesheet" />
+    <title>Visualize 3D</title>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="navbar">
+      <div class="navbar-start">
+        <a class="h-4 my-0 px-4 py-0 text-primary"
+          >3D Visualization of Data Structures and Algorithms
+        </a>
+      </div>
+
+      <div class="navbar-end mx-2">
+        <a class="btn">About</a>
+        <a class="btn">Contact</a>
+      </div>
+    </div>
+    <!-- End of Navigation -->
+
+    <!-- Start of page -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto px-4">
+      <!--Left side of the page   -->
+      <div class="md:col-span-1">
+        <div id="threed">
+          <canvas id="webgl" class="w-screen h-4/5 rounded-md m-1"></canvas>
+        </div>
+
+        <div class="m-2 p-3">
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="scene_background"
+              value="#000000"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn" id="sceneButton">
+              Change Background Color
+            </button>
+          </div>
+          <div class="flex items-center my-2">
+            <input type="color" id="cube_color" title="Choose your color" />
+            <button class="mx-4 btn" id="cubeColor">Change Cube Color</button>
+          </div>
+
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="text_color"
+              class="h-12 block rounded-lg dark:bg-slate-900 dark:border-gray-700"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn p-2" type="button" id="textColor">
+              Change Text Color
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End of left side of page -->
+
+      <div class="container bg-slate-800 rounded-md px-2 mx-auto">
+        <h1 class="m-1 p-1 text-center text-2xl">Stack</h1>
+        <form id="myForm" class="m-1 p-1 items-center *:m-2">
+          <div class="label">
+            <span class="label-text">Enter an integer</span>
+          </div>
+          <input
+            type="text"
+            id="array"
+            placeholder="Type here"
+            class="input input-bordered w-full max-w-xs"
+            required
+          />
+
+          <button type="submit" id="submit_button" class="btn mx-3 px-10">
+            Push
+          </button>
+          <button id="pop_stack" type="button" class="btn">Pop</button>
+          <button type="reset" id="reset" class="btn">Reset</button>
+        </form>
+
+        <details open class="m-3 bg-slate-700 rounded-md p-2">
+          <summary>Stack</summary>
+          <p id="tts-text" class="m-2">
+            A stack is an abstract data type that serves as a collection of
+            elements with two main operations: Push, which adds an element to
+            the collection, and Pop, which removes the most recently added
+            element. <br />The order in which an element added to or removed
+            from a stack is described as last in, first out, referred to by the
+            acronym LIFO.
+          </p>
+        </details>
+        <details open class="m-3 bg-slate-900 rounded-md p-2">
+          <summary>Python</summary>
+          <pre class="bg-slate-800 rounded-md px-1">
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self,data):
+        self.stack.append(data)
+
+
+    def pop(self):
+        ele = self.stack.pop()
+        return ele
+    
+    def print(self):
+        print(self.stack)
+          </pre>
+        </details>
+        <details open class="m-3 bg-slate-900 rounded-md p-2">
+          <summary>C</summary>
+          <pre class="bg-slate-800 rounded-md px-1">
+#include &lt;limits.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct Stack {
+    int top;
+    unsigned capacity;
+    int* array;
+};
+
+struct Stack* createStack(unsigned capacity) {
+    struct Stack* stack = (struct Stack*)malloc(sizeof(struct Stack));
+    stack-&gt;capacity = capacity;
+    stack-&gt;top = -1;
+    stack-&gt;array = (int*)malloc(stack-&gt;capacity * sizeof(int));
+    return stack;
+}
+
+int isFull(struct Stack* stack) {
+    return stack-&gt;top == stack-&gt;capacity - 1;
+}
+
+int isEmpty(struct Stack* stack) {
+    return stack-&gt;top == -1;
+}
+
+void push(struct Stack* stack, int item) {
+    if (isFull(stack))
+        return;
+    stack-&gt;array[++stack-&gt;top] = item;
+}
+
+int pop(struct Stack* stack) {
+    if (isEmpty(stack))
+        return INT_MIN;
+    return stack-&gt;array[stack-&gt;top--];
+}
+
+int peek(struct Stack* stack) {
+    if (isEmpty(stack))
+        return INT_MIN;
+    return stack-&gt;array[stack-&gt;top];
+}
+
+int main() {
+    struct Stack* stack = createStack(100);
+    push(stack, 10);
+    push(stack, 20);
+    push(stack, 30);
+    printf("%d popped from stack\n", pop(stack));
+    return 0;
+}
+
+
+
+          </pre>
+        </details>
+      </div>
+    </div>
+    <!-- End of page -->
+
+    <script type="module" src="/src/javascript/stack.js"></script>
+  </body>
+</html>

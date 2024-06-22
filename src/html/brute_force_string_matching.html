@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/output.css" rel="stylesheet" />
+    <title>Visualize 3D</title>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="navbar">
+      <div class="navbar-start">
+        <a class="h-4 my-0 px-4 py-0 text-primary"
+          >3D Visualization of Data Structures and Algorithms
+        </a>
+      </div>
+
+      <div class="navbar-end mx-2">
+        <a class="btn">About</a>
+        <a class="btn">Contact</a>
+      </div>
+    </div>
+    <!-- End of Navigation -->
+
+    <!-- Start of page -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto px-4">
+      <!--Left side of the page   -->
+      <div class="md:col-span-1">
+        <div id="threed">
+          <canvas id="webgl" class="w-screen h-4/5 rounded-md m-1"></canvas>
+        </div>
+
+        <div class="m-2 p-3">
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="scene_background"
+              value="#000000"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn" id="sceneButton">
+              Change Background Color
+            </button>
+          </div>
+          <div class="flex items-center my-2">
+            <input type="color" id="cube_color" title="Choose your color" />
+            <button class="mx-4 btn" id="cubeColor">Change Cube Color</button>
+          </div>
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="cube_change_color"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn" id="cubeColorOnChange">
+              Change string matched cubes
+            </button>
+          </div>
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="text_color"
+              class="h-12 block rounded-lg dark:bg-slate-900 dark:border-gray-700"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn p-2" type="button" id="textColor">
+              Change Text Color
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End of left side of page -->
+
+      <div class="container bg-slate-800 rounded-md px-2 mx-auto">
+        <h1 class="m-1 p-1 text-center text-2xl">
+          Brute Force String Matching
+        </h1>
+        <form id="myForm" class="m-2">
+          <div>
+            <span>Enter Text and Pattern</span>
+          </div>
+          <input
+            type="text"
+            id="text"
+            placeholder="Enter Text here"
+            class="p-3 rounded-md"
+          />
+          <input
+            type="text"
+            id="pattern"
+            placeholder="Enter Pattern  here"
+            class="p-3 rounded-md"
+          />
+          <button type="submit" id="submit_button" class="btn">Submit</button>
+          <button type="reset" id="reset" class="btn">Reset</button>
+        </form>
+
+        <button id="animate" type="button" class="btn m-2 py-2">
+          Visualize Brute Force String Matching
+        </button>
+
+        <details open class="m-3 bg-slate-700 rounded-md p-2">
+          <summary>Brute Force String Matching</summary>
+          <p id="tts-text" class="m-2">
+            Brute force string matching is a straightforward algorithm used to
+            find occurrences of a pattern within a text. It works by
+            systematically checking if the pattern matches a substring at each
+            position in the text. If a match is found, the algorithm proceeds to
+            verify if the entire pattern matches the substring. This process
+            continues until either a match is found or the end of the text is
+            reached without finding any matches. While simple, brute force
+            string matching can be inefficient for large texts or patterns due
+            to its time complexity, which is typically O(n⋅m)O(n⋅m), where nn is
+            the length of the text and mm is the length of the pattern. Despite
+            its inefficiency, it serves as a fundamental building block in
+            understanding more sophisticated string matching algorithms.
+          </p>
+        </details>
+        <details open class="m-3 bg-slate-900 rounded-md p-2">
+          <summary>Python</summary>
+          <pre class="bg-slate-800 rounded-md px-1">
+def brute_force_string_match(text, pattern):
+    n = len(text)
+    m = len(pattern)
+    for i in range(n - m + 1):
+        j = 0
+        while j &lt; m:
+            if text[i + j] != pattern[j]:
+                break
+            j += 1
+        if j == m:
+            return i
+    return -1
+
+
+          </pre>
+        </details>
+        <details open class="m-3 bg-slate-900 rounded-md p-2">
+          <summary>C</summary>
+          <pre class="bg-slate-800 rounded-md px-1">
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int brute_force_string_match(char* text, char* pattern) {
+    int n = strlen(text);
+    int m = strlen(pattern);
+    for (int i = 0; i &lt;= n - m; ++i) {
+        int j;
+        for (j = 0; j &lt; m; ++j) {
+            if (text[i + j] != pattern[j]) {
+                break;
+            }
+        }
+        if (j == m) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    char text[] = "ABABCABABABAABCABAB";
+    char pattern[] = "ABAB";
+    int position = brute_force_string_match(text, pattern);
+    if (position != -1) {
+        printf("Pattern found at position: %d\n", position);
+    } else {
+        printf("Pattern not found.\n");
+    }
+    return 0;
+}
+</pre>
+
+          </pre>
+        </details>
+      </div>
+    </div>
+    <!-- End of page -->
+
+    <script
+      type="module"
+      src="/src/javascript/brute_force_string_matching.js"
+    ></script>
+  </body>
+</html>

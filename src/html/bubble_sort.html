@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/output.css" rel="stylesheet" />
+    <title>Visualize 3D</title>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="navbar">
+      <div class="navbar-start">
+        <a class="h-4 my-0 px-4 py-0 text-primary"
+          >3D Visualization of Data Structures and Algorithms
+        </a>
+      </div>
+
+      <div class="navbar-end mx-2">
+        <a class="btn">About</a>
+        <a class="btn">Contact</a>
+      </div>
+    </div>
+    <!-- End of Navigation -->
+
+    <!-- Start of page -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto px-4">
+      <!--Left side of the page   -->
+      <div class="md:col-span-1">
+        <div id="threed">
+          <canvas id="webgl" class="w-screen h-4/5 rounded-md m-1"></canvas>
+        </div>
+
+        <div class="m-2 p-3">
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="scene_background"
+              value="#000000"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn" id="sceneButton">
+              Change Background Color
+            </button>
+          </div>
+          <div class="flex items-center my-2">
+            <input type="color" id="cube_color" title="Choose your color" />
+            <button class="mx-4 btn" id="cubeColor">Change Cube Color</button>
+          </div>
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="cube_change_color"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn" id="cubeColorOnChange">
+              Change Swap Cube Color
+            </button>
+          </div>
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="text_color"
+              class="h-12 block rounded-lg dark:bg-slate-900 dark:border-gray-700"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn p-2" type="button" id="textColor">
+              Change Text Color
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End of left side of page -->
+
+      <div class="container bg-slate-800 rounded-md px-2 mx-auto">
+        <h1 class="m-1 p-1 text-center text-2xl">Bubble Sort</h1>
+        <form id="myForm" class="m-2">
+          <div>
+            <span>Enter Integers</span>
+          </div>
+          <input
+            type="text"
+            id="array"
+            placeholder="Type here"
+            class="p-3 rounded-md"
+          />
+          <button type="submit" id="submit_button" class="btn">Submit</button>
+          <button id="animate" type="button" class="btn">
+            Animate Bubble Sort
+          </button>
+          <button type="reset" id="reset" class="btn">Reset</button>
+        </form>
+
+        <details open class="m-3 bg-slate-700 rounded-md p-2">
+          <summary>Bubble Sort</summary>
+          <p id="tts-text" class="m-2">
+            Bubble Sort is the simplest sorting algorithm that works by
+            repeatedly swapping the adjacent elements if they are in the wrong
+            order. This algorithm is not suitable for large data sets as its
+            average and worst-case time complexity is quite high.
+          </p>
+        </details>
+        <details open class="m-3 bg-slate-900 rounded-md p-2">
+          <summary>Python</summary>
+          <pre class="bg-slate-800 rounded-md px-1">
+def bubbleSort(array):
+    for i in range(len(array)):
+        for j in range(0, len(array) - i - 1):
+            if array[j] &gt; array[j + 1]:
+                temp = array[j]
+                array[j] = array[j+1]
+                array[j+1] = temp
+          </pre>
+        </details>
+        <details open class="m-3 bg-slate-900 rounded-md p-2">
+          <summary>C</summary>
+          <pre class="bg-slate-800 rounded-md px-1">
+
+#include &lt; stdio.h &gt;
+
+void bubbleSort(int array[], int size)
+{
+  for (int step = 0; step & lt; size - 1; ++step)
+  {
+    for (int i = 0; i & lt; size - step - 1; ++i)
+    {
+      if (array[i] & gt; array[i + 1])
+      {
+        int temp = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = temp;
+      }
+    }
+  }
+}
+
+void printArray(int array[], int size)
+{
+  for (int i = 0; i & lt; size; ++i)
+  {
+    printf("%d  ", array[i]);
+  }
+  printf("\n");
+}
+
+int main()
+{
+  int data[] = {-2, 45, 0, 11, -9};
+
+  int size = sizeof(data) / sizeof(data[0]);
+
+  bubbleSort(data, size);
+
+  printf("Sorted Array in Ascending Order:\n");
+  printArray(data, size);
+}
+          </pre>
+        </details>
+      </div>
+    </div>
+    <!-- End of page -->
+
+    <script type="module" src="/src/javascript/bubble_sort.js"></script>
+  </body>
+</html>

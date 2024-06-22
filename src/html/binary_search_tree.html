@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link href="/output.css" rel="stylesheet" />
+    <title>Visualize 3D</title>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="navbar">
+      <div class="navbar-start">
+        <a class="h-4 my-0 px-4 py-0 text-primary"
+          >3D Visualization of Data Structures and Algorithms
+        </a>
+      </div>
+
+      <div class="navbar-end mx-2">
+        <a class="btn">About</a>
+        <a class="btn">Contact</a>
+      </div>
+    </div>
+    <!-- End of Navigation -->
+
+    <!-- Start of page -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mx-auto px-4">
+      <!--Left side of the page   -->
+      <div class="md:col-span-1">
+        <div id="threed">
+          <canvas id="webgl" class="w-screen h-4/5 rounded-md m-1"></canvas>
+        </div>
+
+        <div class="m-2 p-3">
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="scene_background"
+              value="#000000"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn" id="sceneButton">
+              Change Background Color
+            </button>
+          </div>
+          <div class="flex items-center my-2">
+            <input type="color" id="node_color" title="Choose your color" />
+            <button class="mx-4 btn" id="nodeColor">Change Node Color</button>
+          </div>
+          <div class="flex items-center my-2">
+            <input
+              type="color"
+              id="text_color"
+              class="h-12 block rounded-lg dark:bg-slate-900 dark:border-gray-700"
+              title="Choose your color"
+            />
+            <button class="mx-4 btn p-2" type="button" id="textColor">
+              Change Text Color
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End of left side of page -->
+
+      <div class="container bg-slate-800 rounded-md px-2 mx-auto">
+        <h1 class="m-1 p-1 text-center text-2xl">Binary Search Tree</h1>
+        <form id="myForm" class="m-2">
+          <div>
+            <span>Enter Integer </span>
+          </div>
+          <input
+            type="text"
+            id="array"
+            placeholder="Type here"
+            class="p-3 rounded-md"
+          />
+
+          <button type="submit" id="submit_button" class="btn">Add Node</button>
+          <button type="reset" id="reset" class="btn">Reset</button>
+          <br />
+        </form>
+
+        <button type="button" id="animate_bfs" class="btn">Animate BFS</button>
+        <button type="button" id="animate_dfs" class="btn">Animate DFS</button>
+        <button type="reset" id="reset_color" class="btn">
+          Reset Animation
+        </button>
+
+        <details open class="m-3 bg-slate-700 rounded-md p-2">
+          <summary>Binary Search Tree</summary>
+          <p id="tts-text" class="m-2">
+            A Binary Search Tree is a data structure used in computer science
+            for organizing and storing data in a sorted manner. Each node in a
+            Binary Search Tree has at most two children, a left child and a
+            right child, with the left child containing values less than the
+            parent node and the right child containing values greater than the
+            parent node
+          </p>
+        </details>
+        <details open class="m-3 bg-slate-900 rounded-md p-2">
+          <summary>Python</summary>
+          <pre class="bg-slate-800 rounded-md px-1">
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+
+def insert(root, key):
+    if root is None:
+        return Node(key)
+    else:
+        if root.val == key:
+            return root
+        elif root.val &lt; key:
+            root.right = insert(root.right, key)
+        else:
+            root.left = insert(root.left, key)
+    return root
+
+def inorder(root):
+    if root:
+        inorder(root.left)
+        print(root.val, end=" ")
+        inorder(root.right)
+
+if __name__ == '__main__':
+    r = Node(50)
+    r = insert(r, 30)
+    r = insert(r, 20)
+    r = insert(r, 40)
+    r = insert(r, 70)
+    r = insert(r, 60)
+    r = insert(r, 80)
+    inorder(r)
+            
+          </pre>
+        </details>
+        <details open class="m-3 bg-slate-900 rounded-md p-2">
+          <summary>C</summary>
+          <pre class="bg-slate-800 rounded-md px-1">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+struct node {
+    int key;
+    struct node *left, *right;
+};
+
+struct node* newNode(int item) {
+    struct node* temp = (struct node*)malloc(sizeof(struct node));
+    temp-&gt;key = item;
+    temp-&gt;left = temp-&gt;right = NULL;
+    return temp;
+}
+
+void inorder(struct node* root) {
+    if (root != NULL) {
+        inorder(root-&gt;left);
+        printf("%d ", root-&gt;key);
+        inorder(root-&gt;right);
+    }
+}
+
+struct node* insert(struct node* node, int key) {
+    if (node == NULL)
+        return newNode(key);
+    
+    if (key &lt; node-&gt;key)
+        node-&gt;left = insert(node-&gt;left, key);
+    else if (key &gt; node-&gt;key)
+        node-&gt;right = insert(node-&gt;right, key);
+    
+    return node;
+}
+
+int main() {
+    struct node* root = NULL;
+    root = insert(root, 50);
+    insert(root, 30);
+    insert(root, 20);
+    insert(root, 40);
+    insert(root, 70);
+    insert(root, 60);
+    insert(root, 80);
+ 
+    inorder(root);
+ 
+    return 0;
+}
+
+          </pre>
+        </details>
+      </div>
+    </div>
+    <!-- End of page -->
+
+    <script type="module" src="/src/javascript/binary_search_tree.js"></script>
+  </body>
+</html>
