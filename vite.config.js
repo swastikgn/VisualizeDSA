@@ -18,7 +18,6 @@ export default defineConfig({
         ),
 
         bubble_sort: resolve(__dirname, "src/html/bubble_sort.html"),
-        linked_list: resolve(__dirname, "src/html/linked_list.html"),
         queue: resolve(__dirname, "src/html/queue.html"),
         selection_sort: resolve(__dirname, "src/html/selection_sort.html"),
         stack: resolve(__dirname, "src/html/stack.html"),
