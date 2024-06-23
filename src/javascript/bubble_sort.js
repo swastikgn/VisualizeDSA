@@ -99,6 +99,8 @@ function createTextMesh(text, size, color, font) {
 const canvas = document.getElementById("webgl");
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color("#2e2e2e");
+
 
 function createCubes() {
   fontLoader.load("/helvetiker_regular.typeface.json", (font) => {

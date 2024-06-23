@@ -64,6 +64,8 @@ const fontLoader = new FontLoader();
 const canvas = document.getElementById("webgl");
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color("#2e2e2e");
+
 
 function element(data, index) {
   // Create Cube Mesh and add it to the group

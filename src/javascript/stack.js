@@ -96,6 +96,7 @@ document.getElementById("pop_stack").onclick = async function () {
 const canvas = document.getElementById("webgl");
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color("#2e2e2e");
 
 const minusone = () => {
   fontLoader.load("/helvetiker_regular.typeface.json", (font) => {

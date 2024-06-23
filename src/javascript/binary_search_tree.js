@@ -11,6 +11,7 @@ const canvas = document.getElementById("webgl");
 let node_color = "red";
 let node_text = "blue";
 const scene = new THREE.Scene();
+scene.background = new THREE.Color("#2e2e2e");
 document.getElementById("sceneButton").onclick = function () {
   let color = document.getElementById("scene_background").value;
   scene.background = new THREE.Color(color);

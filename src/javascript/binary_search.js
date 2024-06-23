@@ -115,6 +115,8 @@ const fontLoader = new FontLoader();
 const canvas = document.getElementById("webgl");
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color("#2e2e2e");
+
 const constructArrow = (inital, final) => {
   let ix = inital.x,
     iy = inital.y,

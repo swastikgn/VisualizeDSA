@@ -101,6 +101,7 @@ document.getElementById("dequeue").onclick = async function () {
 const canvas = document.getElementById("webgl");
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color("#2e2e2e");
 
 const sizes = {
   width: canvas_container.clientWidth,
